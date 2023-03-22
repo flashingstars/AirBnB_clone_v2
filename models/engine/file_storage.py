@@ -13,10 +13,10 @@ class FileStorage:
         if not cls:
             return FileStorage.__objects
         else:
-            filter__dict = {}
+            filter_dict = {}
             class_name = cls.__name__
             for key, value in FileStorage.__objects.items():
-                if (class_name in key)P:
+                if (class_name in key):
                     filter_dict[key] = value
             return filter_dict
 
@@ -29,7 +29,7 @@ class FileStorage:
         if (obj):
             key = f"{obj.__class__.__name__}.{obj.id}"
             del FileStorage.__objects[key]
-            self.save()    
+            self.save()
 
     def save(self):
         """Saves storage dictionary to file"""
@@ -60,6 +60,6 @@ class FileStorage:
             with open(FileStorage.__file_path, 'r') as f:
                 temp = json.load(f)
                 for key, val in temp.items():
-                        self.all()[key] = classes[val['__class__']](**val)
+                    self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
