@@ -13,10 +13,10 @@ class FileStorage:
         if not cls:
             return FileStorage.__objects
         else:
-            filter__dict = {}
+            filter_dict = {}
             class_name = cls.__name__
             for key, value in FileStorage.__objects.items():
-                if (class_name in key)P:
+                if (class_name in key):
                     filter_dict[key] = value
             return filter_dict
 
