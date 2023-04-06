@@ -1,15 +1,15 @@
 #!/usr/bin/env bash
-# This is a script that install and configure nginx
+# A script that install and configure nginx
 
-#update ubuntu package and install nginx
+# Updating ubuntu and installing nginx
 sudo apt-get update
 sudo apt-get install nginx -y
 
-#create directories to be used in the project
+# Creating directories
 sudo mkdir -p /data/web_static/releases/test/
 sudo mkdir -p /data/web_static/shared/
 
-#create a html page with "Holberton school" as body
+# Create a html page with "Holberton school" as body
 echo "<!DOCTYPE html>
 <html>
   <head>
@@ -19,14 +19,14 @@ echo "<!DOCTYPE html>
   </body>
 </html>" | sudo tee /data/web_static/releases/test/index.html
 
-#create a symbolic link to connect directories
+# Creating a symbolic link to connect the directories
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 
-#changing directory ownership and permissions
+# Changing the directory ownership and permissions
 sudo chown -R ubuntu:ubuntu /data/
 
-#setting up the page to be served to the client upon request
+# Setting up the page to be served to the client on request
 sudo sed -i '/server_name _;/a \ \tlocation /hbnb_static {\n\t\talias /data/web_static/current;\n\t}\n' /etc/nginx/sites-available/default
 
-#restart nginx the server
+# Restarting the nginx server
 sudo service nginx restart
