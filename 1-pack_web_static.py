@@ -5,6 +5,7 @@
 from fabric.api import local
 from datetime import datetime
 
+
 def do_pack():
     """ A method to compress a file and return its path """
 
