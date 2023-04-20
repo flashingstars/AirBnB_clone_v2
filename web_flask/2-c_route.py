@@ -18,7 +18,7 @@ def index_hbnb():
     return "HBNB"
 
 @app.route("/c/<text>", strict_slashes=False)
-def cText(text):
+def cTxt(text):
     """ Displaying C and the value of the text variable """
     return "C {}".format(text.replace("_", " "))
 
