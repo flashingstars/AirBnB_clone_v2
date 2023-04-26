@@ -27,7 +27,7 @@ class FileStorage:
     def delete(self, obj=None):
         """ deletes an object form storage dictionary """
         if (obj):
-            key = f"{obj.__class__.__name__}.{obj.id}"
+            key = "{}.{}".format(obj.__class__.__name__, obj.id)
             del FileStorage.__objects[key]
             self.save()
 
@@ -63,3 +63,7 @@ class FileStorage:
                     self.all()[key] = classes[val['__class__']](**val)
         except FileNotFoundError:
             pass
+
+    def close(self):
+        """ Calls reload method """
+        self.reload()
